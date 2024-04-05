@@ -6,4 +6,5 @@ services:
       restart: always # https://docs.docker.com/reference/cli/docker/compose/restart/ - Hot reload del yaml
       ports:
          - 8080:8080 #El rango me lo toma desde:hasta, por lo tanto si quiero un puerto especifico limito el rango a si mismo.
+      command: start-dev
       env_file: '.env'
