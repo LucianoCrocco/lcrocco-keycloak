@@ -1,0 +1,7 @@
+com/identicum/keycloak/KeycloakRestRepoProviderFactory.class
+com/identicum/keycloak/HttpStats.class
+com/identicum/keycloak/SimpleHttpResponse.class
+com/identicum/keycloak/RestHandler.class
+com/identicum/keycloak/RestConfiguration.class
+com/identicum/keycloak/RestUserAdapter.class
+com/identicum/keycloak/KeycloakRestRepoProvider.class
