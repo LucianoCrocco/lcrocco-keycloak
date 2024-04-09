@@ -1,0 +1,30 @@
+{
+   "id": "restusers",
+   "realm": "restusers",
+   "displayName": "restusers",
+   "enabled": true,
+   "registrationAllowed": true,
+   "components": {
+      "org.keycloak.storage.UserStorageProvider": [
+         {
+            "name": "rest",
+            "providerId": "rest-repo-provider",
+            "subComponents": {},
+            "config": {
+               "maxHttpConnections": ["5"],
+               "baseURL": ["http://rest-users-api:8081/"],
+               "apiConnectTimeout": ["1000"],
+               "apiSocketTimeout": ["1000"],
+               "apiConnectionRequestTimeout": ["1000"],
+               "oauthTokenEndpoint": [
+                  "http://localhost:8080/auth/realms/restrepo/protocol/openid-connect/token"
+               ],
+               "cachePolicy": ["DEFAULT"],
+               "httpStatsInterval": ["0"],
+               "authType": ["NONE"],
+               "enabled": ["true"]
+            }
+         }
+      ]
+   }
+}
