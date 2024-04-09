@@ -6,7 +6,7 @@ services:
       restart: always # https://docs.docker.com/reference/cli/docker/compose/restart/ - Hot reload del yaml
       ports:
          - 8080:8080 #El rango me lo toma desde:hasta, por lo tanto si quiero un puerto especifico limito el rango a si mismo.
-      command: start-dev
+      command: start-dev --import-realm
       depends_on:
          - db
       environment:
@@ -16,6 +16,16 @@ services:
          KC_DB_URL: jdbc:postgresql://db:5432/test
          KC_DB_USERNAME: admin
          KC_DB_PASSWORD: admin
+         #REST API
+         JAVA_OPTS_APPEND: -Dkeycloak.profile.feature.admin2=disabled
+         #KEYCLOAK_IMPORT: /opt/keycloak/data/import/realm.json
+      volumes:
+         - ./keycloak-rest-repo/target/keycloak-rest-repo.jar:/opt/keycloak/providers/keycloak-rest-repo.jar
+         - ./keycloak-rest-repo/startup-scripts/:/opt/keycloak/providers/startup-scripts/
+         - ./keycloak-rest-repo/custom-scripts/:/opt/keycloak/providers/custom-scripts/
+         - ./keycloak-rest-repo/objects/:/opt/keycloak/providers/objects/
+         - ./keycloak-rest-repo/objects/realm.json:/opt/keycloak/data/import/realm.json
+         # - ./keycloak-rest-repo/objects/components/rest-repo.json:/opt/keycloak/data/import/rest-repo.json
 
    #DOCS https://hub.docker.com/_/postgres
    db:
@@ -27,3 +37,11 @@ services:
          POSTGRES_USER: admin
          POSTGRES_PASSWORD: admin
          POSTGRES_DB: test
+
+   rest-users-api:
+      container_name: rest-users-api
+      pull_policy: always
+      restart: always
+      image: 'ghcr.io/identicum/rest-users-api:latest'
+      ports:
+         - 8081:8081 #El rango me lo toma desde:hasta, por lo tanto si quiero un puerto especifico limito el rango a si mismo.
