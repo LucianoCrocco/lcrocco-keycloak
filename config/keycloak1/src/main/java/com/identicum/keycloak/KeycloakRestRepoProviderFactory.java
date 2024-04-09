@@ -49,7 +49,8 @@ public class KeycloakRestRepoProviderFactory implements UserStorageProviderFacto
 
 	@Override
 	public void init(Scope config) {
-		logger.infov("Initializing Keycloak Rest Repo factory version: " + getClass().getPackage().getImplementationVersion());
+		logger.infov(
+				"Initializing Keycloak Rest Repo factory version: " + getClass().getPackage().getImplementationVersion());
 
 		ProviderConfigurationBuilder builder = ProviderConfigurationBuilder.create();
 		builder.property().name(PROPERTY_BASE_URL)
@@ -71,7 +72,8 @@ public class KeycloakRestRepoProviderFactory implements UserStorageProviderFacto
 		builder.property().name(PROPERTY_OAUTH_TOKEN_ENDPOINT)
 				.type(STRING_TYPE).label("OAuth2 Token Endpoint")
 				.defaultValue("http://localhost:8080/auth/realms/restrepo/protocol/openid-connect/token")
-				.helpText("Endpoint to negotiate the token with client_credentials grant type (required for OAUTH authorization)")
+				.helpText(
+						"Endpoint to negotiate the token with client_credentials grant type (required for OAUTH authorization)")
 				.add();
 		builder.property().name(PROPERTY_OAUTH_CLIENT_ID)
 				.type(STRING_TYPE).label("OAuth2 Client Id")
@@ -111,7 +113,8 @@ public class KeycloakRestRepoProviderFactory implements UserStorageProviderFacto
 		builder.property().name(API_CONNECTION_REQUEST_TIMEOUT)
 				.type(STRING_TYPE).label("API Connection Request Timeout")
 				.defaultValue("1000")
-				.helpText("Max time [milliseconds] to wait until a connection in the pool is assigned to the requesting thread")
+				.helpText(
+						"Max time [milliseconds] to wait until a connection in the pool is assigned to the requesting thread")
 				.add();
 		builder.property().name(HTTP_STATS_INTERVAL)
 				.type(STRING_TYPE).label("HttpStats interval")
@@ -124,7 +127,7 @@ public class KeycloakRestRepoProviderFactory implements UserStorageProviderFacto
 
 	@Override
 	public KeycloakRestRepoProvider create(KeycloakSession session, ComponentModel model) {
-		if(restHandler == null || !model.getConfig().equals( lastConfiguration )) {
+		if (restHandler == null || !model.getConfig().equals(lastConfiguration)) {
 			logger.infov("Creating a new instance of restHandler");
 			RestConfiguration restConfiguration = new RestConfiguration(model.getConfig());
 			restHandler = new RestHandler(restConfiguration);
@@ -147,13 +150,14 @@ public class KeycloakRestRepoProviderFactory implements UserStorageProviderFacto
 	}
 
 	@Override
-	public void validateConfiguration(KeycloakSession session, RealmModel realm, ComponentModel config) throws ComponentValidationException {
+	public void validateConfiguration(KeycloakSession session, RealmModel realm, ComponentModel config)
+			throws ComponentValidationException {
 		validate(config.getConfig());
 	}
 
-	private void setHttpStats(Logger logger, RestHandler restHandler, Integer httpStatsInterval){
+	private void setHttpStats(Logger logger, RestHandler restHandler, Integer httpStatsInterval) {
 		httpStats.cancel();
-		if(httpStatsInterval > 0){
+		if (httpStatsInterval > 0) {
 			this.httpStats = new Timer();
 			this.httpStats.schedule(new HttpStats(logger, restHandler), 0, httpStatsInterval * TO_MILLISECONDS);
 		}

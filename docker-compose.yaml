@@ -1,11 +1,11 @@
 version: '1.0'
 services:
-   keycloak:
-      container_name: 'Keycloak'
+   keycloak1:
+      container_name: 'Keycloak1'
       image: 'ghcr.io/identicum/keycloak:23.0.7'
       restart: always # https://docs.docker.com/reference/cli/docker/compose/restart/ - Hot reload del yaml
       ports:
-         - 8080:8080 #El rango me lo toma desde:hasta, por lo tanto si quiero un puerto especifico limito el rango a si mismo.
+         - 8080:8080 #ORIGEN:DESTINO.
       command: start-dev --import-realm
       depends_on:
          - db
@@ -20,6 +20,7 @@ services:
          JAVA_OPTS_APPEND: -Dkeycloak.profile.feature.admin2=disabled
          #KEYCLOAK_IMPORT: /opt/keycloak/data/import/realm.json
          KC_SPI_THEME_DEFAULT: 'my-theme'
+         KC_SPI_THEME_WELCOME_THEME: 'my-theme'
       volumes:
          - ./config/keycloak1/target/keycloak-rest-repo.jar:/opt/keycloak/providers/keycloak-rest-repo.jar
          - ./config/keycloak1/startup-scripts/:/opt/keycloak/providers/startup-scripts/
@@ -27,14 +28,13 @@ services:
          - ./config/keycloak1/objects/:/opt/keycloak/providers/objects/
          - ./config/keycloak1/objects/realm.json:/opt/keycloak/data/import/realm.json
          - ./config/keycloak1/themes/:/opt/keycloak/themes/
-         # - ./keycloak-rest-repo/objects/components/rest-repo.json:/opt/keycloak/data/import/rest-repo.json
 
    #DOCS https://hub.docker.com/_/postgres
    db:
       container_name: db
       image: 'postgres:15'
       ports:
-         - 5432:5432 #El rango me lo toma desde:hasta, por lo tanto si quiero un puerto especifico limito el rango a si mismo.
+         - 5432:5432 #ORIGEN:DESTINO.
       environment:
          POSTGRES_USER: admin
          POSTGRES_PASSWORD: admin
@@ -46,4 +46,5 @@ services:
       restart: always
       image: 'ghcr.io/identicum/rest-users-api:latest'
       ports:
-         - 8081:8081 #El rango me lo toma desde:hasta, por lo tanto si quiero un puerto especifico limito el rango a si mismo.
+         - 8090:8081 #ORIGEN:DESTINO.
+

@@ -1,7 +1,7 @@
-/home/lacrocco/Repos/Laboratorio/lcrocco-Keycloack/config/keycloak1/src/main/java/com/identicum/keycloak/RestConfiguration.java
-/home/lacrocco/Repos/Laboratorio/lcrocco-Keycloack/config/keycloak1/src/main/java/com/identicum/keycloak/KeycloakRestRepoProvider.java
-/home/lacrocco/Repos/Laboratorio/lcrocco-Keycloack/config/keycloak1/src/main/java/com/identicum/keycloak/KeycloakRestRepoProviderFactory.java
-/home/lacrocco/Repos/Laboratorio/lcrocco-Keycloack/config/keycloak1/src/main/java/com/identicum/keycloak/RestHandler.java
-/home/lacrocco/Repos/Laboratorio/lcrocco-Keycloack/config/keycloak1/src/main/java/com/identicum/keycloak/SimpleHttpResponse.java
-/home/lacrocco/Repos/Laboratorio/lcrocco-Keycloack/config/keycloak1/src/main/java/com/identicum/keycloak/HttpStats.java
-/home/lacrocco/Repos/Laboratorio/lcrocco-Keycloack/config/keycloak1/src/main/java/com/identicum/keycloak/RestUserAdapter.java
+/home/lacrocco/Repos/Laboratorio/lcrocco-keycloak/config/keycloak1/src/main/java/com/identicum/keycloak/RestHandler.java
+/home/lacrocco/Repos/Laboratorio/lcrocco-keycloak/config/keycloak1/src/main/java/com/identicum/keycloak/RestConfiguration.java
+/home/lacrocco/Repos/Laboratorio/lcrocco-keycloak/config/keycloak1/src/main/java/com/identicum/keycloak/KeycloakRestRepoProvider.java
+/home/lacrocco/Repos/Laboratorio/lcrocco-keycloak/config/keycloak1/src/main/java/com/identicum/keycloak/HttpStats.java
+/home/lacrocco/Repos/Laboratorio/lcrocco-keycloak/config/keycloak1/src/main/java/com/identicum/keycloak/KeycloakRestRepoProviderFactory.java
+/home/lacrocco/Repos/Laboratorio/lcrocco-keycloak/config/keycloak1/src/main/java/com/identicum/keycloak/RestUserAdapter.java
+/home/lacrocco/Repos/Laboratorio/lcrocco-keycloak/config/keycloak1/src/main/java/com/identicum/keycloak/SimpleHttpResponse.java
