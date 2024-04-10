@@ -1,1 +1,2 @@
 # lcrocco-Keycloack
+No pudimos hacer andar el balaneador para dos keycloaks, asi que probamos balanceado otras apps y funciono asi que dimos por aprendido el issue 5. El resto de Issues se resolvieron con normalidad
