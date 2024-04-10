@@ -2,6 +2,9 @@
    "id": "restusers",
    "realm": "restusers",
    "displayName": "restusers",
+   "accountTheme": "rest-theme",
+   "loginTheme": "rest-theme",
+   "adminTheme": "rest-theme",
    "enabled": true,
    "registrationAllowed": true,
    "components": {
