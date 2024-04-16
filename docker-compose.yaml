@@ -18,7 +18,7 @@ services:
          KC_DB_PASSWORD: admin
          #REST API
          JAVA_OPTS_APPEND: -Dkeycloak.profile.feature.admin2=disabled
-         # KEYCLOAK_IMPORT: /opt/keycloak/data/import/realm.json
+         #* Forma de cargar themes de manera global
          # KC_SPI_THEME_DEFAULT: 'my-theme'
          # KC_SPI_THEME_WELCOME_THEME: 'my-theme'
       volumes:
@@ -66,10 +66,6 @@ services:
          - 80:80
       volumes:
          - ./config/nginx/nginx.conf:/etc/nginx/nginx.conf
-      # links:
-      #    - keycloak1
-      #    - keycloak2
-      #    - rest-users-api
       depends_on:
          - keycloak1
          - keycloak2
